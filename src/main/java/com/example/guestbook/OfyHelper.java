@@ -16,12 +16,12 @@
 //[START all]
 package com.example.guestbook;
 
-import com.googlecode.objectify.Objectify;
-import com.googlecode.objectify.ObjectifyFactory;
-import com.googlecode.objectify.ObjectifyService;
-
-import javax.servlet.ServletContextListener;
 import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+
+import com.googlecode.objectify.ObjectifyService;
+import com.snapscreenapp.supervisor.impl.ObjectifyDeviceConnection;
+import com.snapscreenapp.supervisor.impl.ObjectifyUser;
 
 /**
  * OfyHelper, a ServletContextListener, is setup in web.xml to run before a JSP is run.  This is
@@ -33,6 +33,8 @@ public class OfyHelper implements ServletContextListener {
     // request.
     ObjectifyService.register(Guestbook.class);
     ObjectifyService.register(Greeting.class);
+    ObjectifyService.register(ObjectifyDeviceConnection.class);
+    ObjectifyService.register(ObjectifyUser.class);
   }
 
   public void contextDestroyed(ServletContextEvent event) {
